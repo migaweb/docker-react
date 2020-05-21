@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t killerbugs/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true killerbugs/docker-react npm run test
